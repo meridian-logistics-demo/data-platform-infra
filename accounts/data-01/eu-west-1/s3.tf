@@ -44,6 +44,19 @@ resource "aws_s3_bucket_logging" "data01_raw_zone_01" {
   target_prefix = "data01-raw-zone-01/"
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_raw_zone_01" {
+  bucket = aws_s3_bucket.data01_raw_zone_01.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_euw1_raw_zone_01" {
   bucket = "data01-euw1-raw-zone-01"
   tags   = {
@@ -137,6 +150,19 @@ resource "aws_s3_bucket_logging" "data01_raw_zone_01_02" {
   target_prefix = "data01-raw-zone-01-02/"
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_raw_zone_01_02" {
+  bucket = aws_s3_bucket.data01_raw_zone_01_02.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_raw_zone_02" {
   bucket = "data01-raw-zone-02"
   tags   = {
@@ -171,6 +197,19 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "data01_raw_zone_0
       sse_algorithm = "AES256"
     }
     bucket_key_enabled = false
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "data01_raw_zone_02" {
+  bucket = aws_s3_bucket.data01_raw_zone_02.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
   }
 }
 
@@ -262,6 +301,19 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "data01_raw_zone_0
   }
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_raw_zone_02_02" {
+  bucket = aws_s3_bucket.data01_raw_zone_02_02.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_raw_zone_03" {
   bucket = "data01-raw-zone-03"
   tags   = {
@@ -303,6 +355,19 @@ resource "aws_s3_bucket_versioning" "data01_raw_zone_03" {
   bucket = aws_s3_bucket.data01_raw_zone_03.id
   versioning_configuration {
     status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "data01_raw_zone_03" {
+  bucket = aws_s3_bucket.data01_raw_zone_03.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
   }
 }
 
@@ -395,6 +460,19 @@ resource "aws_s3_bucket_logging" "data01_raw_zone_03_02" {
   target_prefix = "data01-raw-zone-03-02/"
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_raw_zone_03_02" {
+  bucket = aws_s3_bucket.data01_raw_zone_03_02.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_raw_zone_04" {
   bucket = "data01-raw-zone-04"
   tags   = {
@@ -484,6 +562,19 @@ resource "aws_s3_bucket_versioning" "data01_euw1_raw_zone_04" {
   }
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_euw1_raw_zone_04" {
+  bucket = aws_s3_bucket.data01_euw1_raw_zone_04.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_raw_zone_04_02" {
   bucket = "data01-raw-zone-04-02"
   tags   = {
@@ -525,6 +616,19 @@ resource "aws_s3_bucket_logging" "data01_raw_zone_04_02" {
   bucket        = aws_s3_bucket.data01_raw_zone_04_02.id
   target_bucket = "audit-logs"
   target_prefix = "data01-raw-zone-04-02/"
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "data01_raw_zone_04_02" {
+  bucket = aws_s3_bucket.data01_raw_zone_04_02.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
 }
 
 resource "aws_s3_bucket" "data01_raw_zone_05" {
@@ -576,6 +680,19 @@ resource "aws_s3_bucket_logging" "data01_raw_zone_05" {
   bucket        = aws_s3_bucket.data01_raw_zone_05.id
   target_bucket = "audit-logs"
   target_prefix = "data01-raw-zone-05/"
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "data01_raw_zone_05" {
+  bucket = aws_s3_bucket.data01_raw_zone_05.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
 }
 
 resource "aws_s3_bucket" "data01_euw1_raw_zone_05" {
@@ -679,6 +796,19 @@ resource "aws_s3_bucket_logging" "data01_raw_zone_05_02" {
   target_prefix = "data01-raw-zone-05-02/"
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_raw_zone_05_02" {
+  bucket = aws_s3_bucket.data01_raw_zone_05_02.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_raw_zone_06" {
   bucket = "data01-raw-zone-06"
   tags   = {
@@ -720,6 +850,19 @@ resource "aws_s3_bucket_logging" "data01_raw_zone_06" {
   bucket        = aws_s3_bucket.data01_raw_zone_06.id
   target_bucket = "audit-logs"
   target_prefix = "data01-raw-zone-06/"
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "data01_raw_zone_06" {
+  bucket = aws_s3_bucket.data01_raw_zone_06.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
 }
 
 resource "aws_s3_bucket" "data01_euw1_raw_zone_06" {
@@ -764,6 +907,19 @@ resource "aws_s3_bucket_versioning" "data01_euw1_raw_zone_06" {
   bucket = aws_s3_bucket.data01_euw1_raw_zone_06.id
   versioning_configuration {
     status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "data01_euw1_raw_zone_06" {
+  bucket = aws_s3_bucket.data01_euw1_raw_zone_06.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
   }
 }
 
@@ -855,6 +1011,19 @@ resource "aws_s3_bucket_logging" "data01_raw_zone_07" {
   target_prefix = "data01-raw-zone-07/"
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_raw_zone_07" {
+  bucket = aws_s3_bucket.data01_raw_zone_07.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_euw1_raw_zone_07" {
   bucket = "data01-euw1-raw-zone-07"
   tags   = {
@@ -905,6 +1074,19 @@ resource "aws_s3_bucket_logging" "data01_euw1_raw_zone_07" {
   target_prefix = "data01-euw1-raw-zone-07/"
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_euw1_raw_zone_07" {
+  bucket = aws_s3_bucket.data01_euw1_raw_zone_07.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_curated_zone_07" {
   bucket = "data01-curated-zone-07"
   tags   = {
@@ -947,6 +1129,19 @@ resource "aws_s3_bucket_logging" "data01_curated_zone_07" {
   bucket        = aws_s3_bucket.data01_curated_zone_07.id
   target_bucket = "audit-logs"
   target_prefix = "data01-curated-zone-07/"
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "data01_curated_zone_07" {
+  bucket = aws_s3_bucket.data01_curated_zone_07.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
 }
 
 resource "aws_s3_bucket" "data01_curated_zone_08" {
@@ -1040,6 +1235,19 @@ resource "aws_s3_bucket_logging" "data01_euw1_curated_zone_08" {
   bucket        = aws_s3_bucket.data01_euw1_curated_zone_08.id
   target_bucket = "audit-logs"
   target_prefix = "data01-euw1-curated-zone-08/"
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "data01_euw1_curated_zone_08" {
+  bucket = aws_s3_bucket.data01_euw1_curated_zone_08.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
 }
 
 resource "aws_s3_bucket" "data01_cur_zone_08" {
@@ -1186,6 +1394,19 @@ resource "aws_s3_bucket_logging" "data01_euw1_curated_zone_09" {
   target_prefix = "data01-euw1-curated-zone-09/"
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_euw1_curated_zone_09" {
+  bucket = aws_s3_bucket.data01_euw1_curated_zone_09.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_cur_zone_09" {
   bucket = "data01-cur-zone-09"
   tags   = {
@@ -1313,6 +1534,19 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "data01_euw1_curat
   }
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_euw1_curated_zone_10" {
+  bucket = aws_s3_bucket.data01_euw1_curated_zone_10.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_cur_zone_10" {
   bucket = "data01-cur-zone-10"
   tags   = {
@@ -1358,6 +1592,19 @@ resource "aws_s3_bucket_versioning" "data01_cur_zone_10" {
   }
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_cur_zone_10" {
+  bucket = aws_s3_bucket.data01_cur_zone_10.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_curated_zone_11" {
   bucket = "data01-curated-zone-11"
   tags   = {
@@ -1400,6 +1647,19 @@ resource "aws_s3_bucket_versioning" "data01_curated_zone_11" {
   bucket = aws_s3_bucket.data01_curated_zone_11.id
   versioning_configuration {
     status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "data01_curated_zone_11" {
+  bucket = aws_s3_bucket.data01_curated_zone_11.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
   }
 }
 
@@ -1489,6 +1749,19 @@ resource "aws_s3_bucket_logging" "data01_cur_zone_11" {
   bucket        = aws_s3_bucket.data01_cur_zone_11.id
   target_bucket = "audit-logs"
   target_prefix = "data01-cur-zone-11/"
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "data01_cur_zone_11" {
+  bucket = aws_s3_bucket.data01_cur_zone_11.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
 }
 
 resource "aws_s3_bucket" "data01_curated_zone_12" {
@@ -1592,6 +1865,19 @@ resource "aws_s3_bucket_logging" "data01_euw1_curated_zone_12" {
   target_prefix = "data01-euw1-curated-zone-12/"
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_euw1_curated_zone_12" {
+  bucket = aws_s3_bucket.data01_euw1_curated_zone_12.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_cur_zone_12" {
   bucket = "data01-cur-zone-12"
   tags   = {
@@ -1634,6 +1920,19 @@ resource "aws_s3_bucket_versioning" "data01_cur_zone_12" {
   bucket = aws_s3_bucket.data01_cur_zone_12.id
   versioning_configuration {
     status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "data01_cur_zone_12" {
+  bucket = aws_s3_bucket.data01_cur_zone_12.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
   }
 }
 
@@ -1729,6 +2028,19 @@ resource "aws_s3_bucket_versioning" "data01_euw1_curated_zone_13" {
   bucket = aws_s3_bucket.data01_euw1_curated_zone_13.id
   versioning_configuration {
     status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "data01_euw1_curated_zone_13" {
+  bucket = aws_s3_bucket.data01_euw1_curated_zone_13.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
   }
 }
 
@@ -1869,6 +2181,19 @@ resource "aws_s3_bucket_logging" "data01_published_zone_14" {
   target_prefix = "data01-published-zone-14/"
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_published_zone_14" {
+  bucket = aws_s3_bucket.data01_published_zone_14.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_euw1_published_zone_14" {
   bucket = "data01-euw1-published-zone-14"
   tags   = {
@@ -1910,6 +2235,19 @@ resource "aws_s3_bucket_versioning" "data01_euw1_published_zone_14" {
   bucket = aws_s3_bucket.data01_euw1_published_zone_14.id
   versioning_configuration {
     status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "data01_euw1_published_zone_14" {
+  bucket = aws_s3_bucket.data01_euw1_published_zone_14.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
   }
 }
 
@@ -2007,6 +2345,19 @@ resource "aws_s3_bucket_logging" "data01_euw1_published_zone_15" {
   target_prefix = "data01-euw1-published-zone-15/"
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_euw1_published_zone_15" {
+  bucket = aws_s3_bucket.data01_euw1_published_zone_15.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_pub_zone_15" {
   bucket = "data01-pub-zone-15"
   tags   = {
@@ -2094,6 +2445,19 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "data01_published_
   }
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_published_zone_16" {
+  bucket = aws_s3_bucket.data01_published_zone_16.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_euw1_published_zone_16" {
   bucket = "data01-euw1-published-zone-16"
   tags   = {
@@ -2135,6 +2499,19 @@ resource "aws_s3_bucket_logging" "data01_euw1_published_zone_16" {
   bucket        = aws_s3_bucket.data01_euw1_published_zone_16.id
   target_bucket = "audit-logs"
   target_prefix = "data01-euw1-published-zone-16/"
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "data01_euw1_published_zone_16" {
+  bucket = aws_s3_bucket.data01_euw1_published_zone_16.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
 }
 
 resource "aws_s3_bucket" "data01_pub_zone_16" {
@@ -2218,6 +2595,19 @@ resource "aws_s3_bucket_versioning" "data01_published_zone_17" {
   }
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_published_zone_17" {
+  bucket = aws_s3_bucket.data01_published_zone_17.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_euw1_published_zone_17" {
   bucket = "data01-euw1-published-zone-17"
   tags   = {
@@ -2261,6 +2651,19 @@ resource "aws_s3_bucket_logging" "data01_euw1_published_zone_17" {
   target_prefix = "data01-euw1-published-zone-17/"
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_euw1_published_zone_17" {
+  bucket = aws_s3_bucket.data01_euw1_published_zone_17.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_pub_zone_17" {
   bucket = "data01-pub-zone-17"
   tags   = {
@@ -2302,6 +2705,19 @@ resource "aws_s3_bucket_versioning" "data01_pub_zone_17" {
   bucket = aws_s3_bucket.data01_pub_zone_17.id
   versioning_configuration {
     status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "data01_pub_zone_17" {
+  bucket = aws_s3_bucket.data01_pub_zone_17.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
   }
 }
 
@@ -2355,6 +2771,19 @@ resource "aws_s3_bucket_logging" "data01_published_zone_18" {
   target_prefix = "data01-published-zone-18/"
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_published_zone_18" {
+  bucket = aws_s3_bucket.data01_published_zone_18.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_euw1_published_zone_18" {
   bucket = "data01-euw1-published-zone-18"
   tags   = {
@@ -2399,6 +2828,19 @@ resource "aws_s3_bucket_versioning" "data01_euw1_published_zone_18" {
   }
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_euw1_published_zone_18" {
+  bucket = aws_s3_bucket.data01_euw1_published_zone_18.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_pub_zone_18" {
   bucket = "data01-pub-zone-18"
   tags   = {
@@ -2440,6 +2882,19 @@ resource "aws_s3_bucket_logging" "data01_pub_zone_18" {
   bucket        = aws_s3_bucket.data01_pub_zone_18.id
   target_bucket = "audit-logs"
   target_prefix = "data01-pub-zone-18/"
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "data01_pub_zone_18" {
+  bucket = aws_s3_bucket.data01_pub_zone_18.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
 }
 
 resource "aws_s3_bucket" "data01_published_zone_19" {
@@ -2490,6 +2945,19 @@ resource "aws_s3_bucket_logging" "data01_published_zone_19" {
   bucket        = aws_s3_bucket.data01_published_zone_19.id
   target_bucket = "audit-logs"
   target_prefix = "data01-published-zone-19/"
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "data01_published_zone_19" {
+  bucket = aws_s3_bucket.data01_published_zone_19.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
 }
 
 resource "aws_s3_bucket" "data01_euw1_published_zone_19" {
@@ -2579,6 +3047,19 @@ resource "aws_s3_bucket_versioning" "data01_pub_zone_19" {
   }
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "data01_pub_zone_19" {
+  bucket = aws_s3_bucket.data01_pub_zone_19.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+  }
+}
+
 resource "aws_s3_bucket" "data01_published_zone_20" {
   bucket = "data01-published-zone-20"
   tags   = {
@@ -2663,6 +3144,19 @@ resource "aws_s3_bucket_versioning" "data01_euw1_published_zone_20" {
   bucket = aws_s3_bucket.data01_euw1_published_zone_20.id
   versioning_configuration {
     status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "data01_euw1_published_zone_20" {
+  bucket = aws_s3_bucket.data01_euw1_published_zone_20.id
+  rule {
+    id     = "archive"
+    status = "Enabled"
+    filter {}
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
   }
 }
 
